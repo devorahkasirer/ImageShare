@@ -205,7 +205,7 @@ namespace ImageShare.Data
                         ViewCount = (int)reader["ViewCount"],
                         DateUploaded = (DateTime)reader["DateUploaded"]
                     };
-                    image.ViewCount = GetLikesCountForImage(image.Id);
+                    image.Likes = GetLikesCountForImage(image.Id);
                     result.Add(image);
                 }
                 return result;

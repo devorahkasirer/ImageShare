@@ -9,12 +9,7 @@
     });
 
     $.get("/home/likedAlready", { imageId: imageId, userId: userId }, function (result) {
-        if(result.likedAlready){
-            $("#addLike").attr('disabled', true);
-        }
-        else {
-            $("#addLike").attr('disabled', false);
-        }
+        $("#addLike").attr('disabled', result.likedAlready);
     });
 
     setInterval(function () {
