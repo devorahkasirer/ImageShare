@@ -1,0 +1,7 @@
+﻿@using ImageShare.Data
+@model ImageShare.Web.Models.NewImageViewModel
+
+<h1>Image has been added successfully!</h1>
+<h1> Share this link with your friends:</h1>
+<h2><a href="/home/details?imageId=@Model.ImageId">http://localhost:55907/Home/Details?ImageId=@Model.ImageId</a></h2>
+<a class="btn btn-default" href="/home/index">Return to Main</a>

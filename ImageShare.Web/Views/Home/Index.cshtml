@@ -1,0 +1,91 @@
+﻿@using ImageShare.Data
+@model ImageShare.Web.Models.IndexViewModel
+
+@if(Model.LoggedIn)
+{
+    <h3>Welcome @Model.User.FirstName @Model.User.LastName <a href="/home/Likes">Click here</a> to view your liked images</h3>
+    <h6><a href="/home/logout">Log out</a></h6>
+}
+else{
+    <a class="btn btn-primary" href="/home/signUp">Sign Up</a>
+    <a class="btn btn-primary" href="/home/signIn">Sign In</a>
+}
+
+<div class="well">
+    <form method="post" action="/home/addImage" class="form-inline" enctype="multipart/form-data">
+        @if (Model.LoggedIn)
+        {
+            <input type="text" class="form-control" placeholder="First Name" name="firstName" value="@Model.User.FirstName"/>
+            <input type="text" class="form-control" placeholder="Last Name" name="lastName" value="@Model.User.LastName"/>
+        }
+        else
+        {
+            <input type="text" class="form-control" placeholder="First Name" name="firstName" />
+            <input type="text" class="form-control" placeholder="Last Name" name="lastName" />
+        }
+        <input type="file" class="form-control" name="image" />
+        <button class="btn btn-success">Add Image</button>
+    </form>
+</div>
+<h2>5 Images Most Popular</h2>
+<table class="table table-bordered" id="Top5Viewed">
+    <tr>
+        <th>Image</th>
+        <th>Posted By</th>
+        <th>View Count</th>
+        <th>Likes</th>
+        <th>Date Uploaded</th>
+    </tr>
+    @foreach(Image image in Model.Top5Viewed)
+    {
+        <tr>
+            <td><a href="/home/details?ImageId=@image.Id"><img src="/images/@image.FileName" style="height: 100px" /></a></td>
+            <td>@image.FirstName @image.LastName</td>
+            <td>@image.ViewCount</td>
+            <td>@image.Likes</td>
+            <td>@image.DateUploaded.ToShortDateString()</td>
+        </tr>
+    }
+</table>
+<br />
+<h2>5 Images Most Liked</h2>
+<table class="table table-bordered" id="Top5Liked">
+    <tr>
+        <th>Image</th>
+        <th>Posted By</th>
+        <th>View Count</th>
+        <th>Likes</th>
+        <th>Date Uploaded</th>
+    </tr>
+    @foreach (Image image in Model.Top5Liked)
+    {
+        <tr>
+            <td><a href="/home/details?ImageId=@image.Id"><img src="/images/@image.FileName" style="height: 100px"/></a></td>
+            <td>@image.FirstName @image.LastName</td>
+            <td>@image.ViewCount</td>
+            <td>@image.Likes</td>
+            <td>@image.DateUploaded.ToShortDateString()</td>
+        </tr>
+    }
+</table>
+<br />
+<h2>5 Images Posted Last</h2>
+<table class="table table-bordered" id="Top5Date">
+    <tr>
+        <th>Image</th>
+        <th>Posted By</th>
+        <th>View Count</th>
+        <th>Likes</th>
+        <th>Date Uploaded</th>
+    </tr>
+    @foreach (Image image in Model.Top5Date)
+    {
+        <tr>
+            <td><a href="/home/details?ImageId=@image.Id"><img src="/images/@image.FileName" style="height: 100px" /></a></td>
+            <td>@image.FirstName @image.LastName</td>
+            <td>@image.ViewCount</td>
+            <td>@image.Likes</td>
+            <td>@image.DateUploaded.ToShortDateString()</td>
+        </tr>
+    }
+</table>

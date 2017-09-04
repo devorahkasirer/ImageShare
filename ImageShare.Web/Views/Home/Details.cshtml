@@ -1,0 +1,24 @@
+﻿@using ImageShare.Data
+@model ImageShare.Web.Models.DetailsViewModel
+
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <h1>Posted by: @Model.Image.FirstName @Model.Image.LastName</h1>
+        <h2>Uploaded on: @Model.Image.DateUploaded.ToShortDateString()</h2>
+
+        <img id="image" data-image-id="@Model.Image.Id" src="/images/@Model.Image.FileName"style="height: 300px" />
+
+        <h4 id="viewcount">View Count: @Model.Image.ViewCount</h4>
+        <h4 id="likes" >Likes: @Model.Image.Likes</h4>
+        @if(Model.User != null)
+        {
+            <button id="addLike" data-user-id="@Model.User.Id"  class="btn btn-primary">I Like It:)</button>
+        }
+        <a class="btn btn-default" href="/home/index">Return to Main</a>
+    </div>
+</div>
+
+@section scripts
+{
+    <script src="~/Scripts/details.js"></script>
+}
