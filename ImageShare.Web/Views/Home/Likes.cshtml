@@ -17,16 +17,7 @@ else
             <th>Likes</th>
             <th>Date Uploaded</th>
         </tr>
-        @foreach (Image image in Model.Images)
-        {
-            <tr>
-                <td><img src="/images/@image.FileName" style="height: 100px" /></td>
-                <td>@image.FirstName @image.LastName</td>
-                <td>@image.ViewCount</td>
-                <td>@image.Likes</td>
-                <td>@image.DateUploaded.ToShortDateString()</td>
-            </tr>
-        }
+        @{Html.RenderPartial("_ImageRows", Model.Images);}
     </table>
 }
 

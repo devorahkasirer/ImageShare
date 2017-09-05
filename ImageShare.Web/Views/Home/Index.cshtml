@@ -36,16 +36,7 @@ else{
         <th>Likes</th>
         <th>Date Uploaded</th>
     </tr>
-    @foreach(Image image in Model.Top5Viewed)
-    {
-        <tr>
-            <td><a href="/home/details?ImageId=@image.Id"><img src="/images/@image.FileName" style="height: 100px" /></a></td>
-            <td>@image.FirstName @image.LastName</td>
-            <td>@image.ViewCount</td>
-            <td>@image.Likes</td>
-            <td>@image.DateUploaded.ToShortDateString()</td>
-        </tr>
-    }
+    @{Html.RenderPartial("_ImageRows", Model.Top5Viewed);}
 </table>
 <br />
 <h2>5 Images Most Liked</h2>
@@ -57,16 +48,7 @@ else{
         <th>Likes</th>
         <th>Date Uploaded</th>
     </tr>
-    @foreach (Image image in Model.Top5Liked)
-    {
-        <tr>
-            <td><a href="/home/details?ImageId=@image.Id"><img src="/images/@image.FileName" style="height: 100px"/></a></td>
-            <td>@image.FirstName @image.LastName</td>
-            <td>@image.ViewCount</td>
-            <td>@image.Likes</td>
-            <td>@image.DateUploaded.ToShortDateString()</td>
-        </tr>
-    }
+    @{Html.RenderPartial("_ImageRows", Model.Top5Liked);}
 </table>
 <br />
 <h2>5 Images Posted Last</h2>
@@ -78,14 +60,5 @@ else{
         <th>Likes</th>
         <th>Date Uploaded</th>
     </tr>
-    @foreach (Image image in Model.Top5Date)
-    {
-        <tr>
-            <td><a href="/home/details?ImageId=@image.Id"><img src="/images/@image.FileName" style="height: 100px" /></a></td>
-            <td>@image.FirstName @image.LastName</td>
-            <td>@image.ViewCount</td>
-            <td>@image.Likes</td>
-            <td>@image.DateUploaded.ToShortDateString()</td>
-        </tr>
-    }
+    @{Html.RenderPartial("_ImageRows", Model.Top5Date);}
 </table>

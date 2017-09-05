@@ -1,0 +1,13 @@
+﻿@using ImageShare.Data
+@model IEnumerable<Image>
+
+@foreach (Image image in Model)
+{
+    <tr>
+        <td><a href="/home/details?ImageId=@image.Id"><img src="/images/@image.FileName" style="height: 100px" /></a></td>
+        <td>@image.FirstName @image.LastName</td>
+        <td>@image.ViewCount</td>
+        <td>@image.Likes</td>
+        <td>@image.DateUploaded.ToShortDateString()</td>
+    </tr>
+}

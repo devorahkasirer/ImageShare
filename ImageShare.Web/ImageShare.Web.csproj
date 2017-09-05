@@ -209,6 +209,7 @@
     <Content Include="Views\Home\Likes.cshtml" />
     <Content Include="Views\Home\addImage.cshtml" />
     <Content Include="Views\Home\Details.cshtml" />
+    <Content Include="Views\Shared\_ImageRows.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
