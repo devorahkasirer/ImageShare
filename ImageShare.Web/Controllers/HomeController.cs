@@ -95,7 +95,11 @@ namespace ImageShare.Web.Controllers
             var manager = new Manager(Properties.Settings.Default.ConStr);
             var vm = new DetailsViewModel();
             vm.Image = manager.GetImageById(ImageId);
-            manager.AddViewCount(ImageId);
+            if (Session[$"{ImageId}"] == null)
+            {
+                manager.AddViewCount(ImageId);
+                Session[$"{ImageId}"] = ImageId;
+            }
             if (User.Identity.IsAuthenticated)
             {
                 string email = User.Identity.Name;
